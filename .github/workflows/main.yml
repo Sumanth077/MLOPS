@@ -1,18 +1,21 @@
-name: Azure Python 3.6
+name: Azure Python
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-jobs:
-  build:
+    branches: [ main ]
+jobs: 
+  build: 
+  
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python 3.6.15
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.6.15
-      - name: Install Dependncies
-        run: |
-          make install
+    
+    steps: 
+    - uses: actions/checkout@v2
+    - name: Install dependencies 
+      run: |
+        make install
+    - name: Lint
+      run: |
+        make lint
+    - name: Test
+      run: |
+        make test
+
